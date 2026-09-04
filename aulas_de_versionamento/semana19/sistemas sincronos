@@ -1,0 +1,124 @@
+# Sistemas Síncronos e Assíncronos
+
+## Sistemas Síncronos
+
+Os **sistemas síncronos** são sistemas em que as requisições são processadas diretamente.
+
+### Características
+
+* Recebem várias requisições dos clientes.
+* As requisições são processadas e devolvidas diretamente.
+* Normalmente, o cliente precisa **aguardar a resposta** para continuar o processo.
+* Podem exigir mais recursos dependendo da quantidade de requisições simultâneas.
+* Não utilizam necessariamente uma fila intermediária para organizar o processamento.
+
+---
+
+## Sistemas Assíncronos
+
+Os **sistemas assíncronos** separam o processamento das requisições em diferentes etapas.
+
+Esse modelo pode utilizar uma arquitetura baseada em **Producer, Broker e Consumer**.
+
+### Producer
+
+O **Producer (Produtor)** é responsável por:
+
+* Gerar ou enviar uma mensagem/requisição.
+* Receber uma ação originada pelo cliente ou sistema.
+* Encaminhar essa mensagem para o Broker.
+
+### Broker
+
+O **Broker** funciona como intermediário entre o Producer e o Consumer.
+
+É responsável por:
+
+* Receber as mensagens enviadas pelo Producer.
+* Organizar as mensagens.
+* Armazená-las temporariamente quando necessário.
+* Encaminhá-las para os Consumers responsáveis.
+
+### Consumer
+
+O **Consumer (Consumidor)** é responsável por:
+
+* Receber as mensagens disponibilizadas pelo Broker.
+* Processar as tarefas.
+* Executar a lógica necessária.
+* Gerar ou encaminhar o resultado do processamento.
+
+### Fluxo simplificado
+
+`Cliente → Producer → Broker → Consumer → Processamento/Resultado`
+
+---
+
+# Tecnologias de Mensageria
+
+Algumas tecnologias utilizadas em sistemas assíncronos e arquiteturas orientadas a mensagens são:
+
+* RabbitMQ
+* Serviços de mensageria da Amazon (AWS)
+* Apache Kafka
+
+---
+
+## RabbitMQ
+
+O **RabbitMQ** é um sistema de mensageria tradicional.
+
+### Características
+
+* Trabalha com filas de mensagens.
+* Permite comunicação assíncrona entre aplicações.
+* Possui recursos avançados de **roteamento**.
+* Permite criar regras mais complexas para determinar para onde cada mensagem deve ser enviada.
+
+**Destaque:** mensageria tradicional e roteamento complexo.
+
+---
+
+## Amazon Web Services (AWS)
+
+A **Amazon Web Services (AWS)** possui diferentes serviços que podem ser utilizados para mensageria e processamento assíncrono.
+
+Exemplos incluem:
+
+* Amazon SQS
+* Amazon SNS
+* Amazon MQ
+* Amazon MSK
+
+Esses serviços utilizam infraestrutura em nuvem e podem reduzir a necessidade de manter servidores e sistemas de mensageria manualmente.
+
+---
+
+## Apache Kafka
+
+O **Apache Kafka** é uma plataforma **open source** utilizada para processamento e transmissão de grandes fluxos de dados.
+
+### Características
+
+* É open source.
+* Trabalha muito bem com grandes volumes de eventos e mensagens.
+* É utilizado em arquiteturas orientadas a eventos.
+* Possui alta escalabilidade.
+* Pode distribuir dados entre vários sistemas e aplicações.
+
+---
+
+# Resumo
+
+| Tecnologia       | Principal característica                           |
+| ---------------- | -------------------------------------------------- |
+| **RabbitMQ**     | Mensageria tradicional e roteamento complexo       |
+| **AWS**          | Serviços de mensageria gerenciados em nuvem        |
+| **Apache Kafka** | Alto volume de eventos, streaming e escalabilidade |
+
+## Estrutura de um sistema assíncrono
+
+1. **Producer** → produz/envia a mensagem.
+2. **Broker** → recebe, organiza e distribui a mensagem.
+3. **Consumer** → recebe e processa a mensagem.
+4. **Resultado** → o processamento é concluído sem exigir que todo o fluxo aconteça imediatamente.
